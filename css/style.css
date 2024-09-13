@@ -7640,7 +7640,7 @@ h1, h2, h3, h4, h5,
       letter-spacing: 2px;
       color: rgba(255, 255, 255, 0.8); }
   .photography-entry:hover .overlay, .photography-entry:focus .overlay {
-    opacity: .7; }
+    opacity: 1; }
   .photography-entry:hover .text, .photography-entry:focus .text {
     opacity: 1; }
 
@@ -7910,8 +7910,6 @@ h1, h2, h3, h4, h5,
         border-color: #fff;
         color: #f05d23; }
 
-.blog-entry {
-  margin-bottom: 6em; }
   .blog-entry .img {
     display: block;
     height: 400px;
@@ -8324,6 +8322,35 @@ textarea.form-control {
         .comment-list li .comment-body .reply:hover {
           color: #fff;
           background: black; }
+
+.link_btn {
+  text-transform: uppercase;
+  border: 2px solid orange;
+  padding: 8px;
+  border-radius: 4px 4px;
+  box-shadow: 10px 5px 5px grey;
+  font-weight: bolder;
+}
+
+.github {
+  display: flex;
+  justify-content: flex-end;
+  top: 32px;
+  position: relative;
+  z-index: 1;
+}
+
+  .github img {
+    width: 2rem;
+  } 
+
+  .tech-stack {
+    display: grid;
+    grid-template-columns: repeat(2, 165px);
+    justify-content: center;
+    list-style-type: none;
+    padding-top: 20px;
+  }
 
 .search-form {
   background: #fafafa;
