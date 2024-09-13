@@ -8323,7 +8323,7 @@ textarea.form-control {
           color: #fff;
           background: black; }
 
-.link_btn{
+.link_btn {
   text-transform: uppercase;
   border: 2px solid orange;
   padding: 8px;
@@ -8332,7 +8332,7 @@ textarea.form-control {
   font-weight: bolder;
 }
 
-.github{
+.github {
   display: flex;
   justify-content: flex-end;
   top: 32px;
@@ -8340,9 +8340,17 @@ textarea.form-control {
   z-index: 1;
 }
 
-  .github img{
+  .github img {
     width: 2rem;
   } 
+
+  .tech-stack {
+    display: grid;
+    grid-template-columns: repeat(2, 165px);
+    justify-content: center;
+    list-style-type: none;
+    padding-top: 20px;
+  }
 
 .search-form {
   background: #fafafa;
