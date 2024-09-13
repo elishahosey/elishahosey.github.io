@@ -8323,11 +8323,13 @@ textarea.form-control {
           color: #fff;
           background: black; }
 
-.resume_btn{
+.link_btn{
   text-transform: uppercase;
   border: 2px solid orange;
   padding: 8px;
   border-radius: 4px 4px;
+  box-shadow: 10px 5px 5px grey;
+  font-weight: bolder;
 }
 
 .github{
