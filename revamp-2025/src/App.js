@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "./App.css";
+import photo from "./img/elisha-photo.jpg";
 import { Download } from "lucide-react";
 
 const NotebookEntry = ({ title, content }) => {
@@ -44,6 +45,7 @@ export default function App() {
   const [output, setOutput] = useState([]);
   const [showStatic, setShowStatic] = useState(false);
   const [showNotebook, setShowNotebook] = useState(false);
+  const [showAboutVisual, setShowAboutVisual] = useState(false);
 
   const notebookData = [
     { title: "🧠 Big-O Cheat Sheet", content: "O(1), O(n), O(log n), O(n^2)... Common complexities and examples." },
@@ -51,6 +53,34 @@ export default function App() {
     { title: "🖧 Networking Fundamentals", content: "OSI model, HTTP vs TCP, common ports, DNS flow." },
     { title: "🐚 Bash + Shell Notes", content: "grep, awk, sed, chmod, piping, scripting patterns." },
     { title: "🧪 Data Science Ideas", content: "Pandas recipes, scikit-learn workflows, feature engineering notes." }
+  ];
+
+  const experienceData = [
+    {
+      title: "Software Developer at GM - Ultra Platform",
+      content: "Built reusable UI components, automated test cases with Selenium, and supported a custom AEM CMS used globally by 50k+ users."
+    },
+    {
+      title: "Software Engineer at GM - Quantum Team",
+      content: "Developed content authoring features, collaborated on Java backend services, and improved accessibility on key front-end modules."
+    },
+    {
+      title: "React & Django Developer - Email Cleaner Tool",
+      content: "Designed a Gmail-integrated tool for cleaning up promotional emails using OAuth and label filtering."
+    },
+    {
+      title: "Freelance Web Projects",
+      content: "Delivered full-stack solutions for personal clients, focusing on responsive design and performance."
+    },
+    {
+      title: "Graduate Student - M.S. in Data Science",
+      content: "Maintaining a 4.0 GPA while focusing on machine learning, statistics, and advanced Python workflows."
+    }
+  ];
+
+  const techTags = [
+    "React", "Django", "JavaScript", "Python", "Java", "Gmail API", "OAuth 2.0",
+    "Selenium", "AEM", "Git", "GitHub", "VS Code", "Bash", "SQL", "Tailwind CSS"
   ];
 
   const handleCommand = (e) => {
@@ -71,12 +101,16 @@ export default function App() {
         break;
       case "about":
         next.push("Elisha is a developer who vibes with code and sci-fi.");
+        next.push("(use 'about!' to skip to visual version)");
         break;
+      case "about!":
+        setShowAboutVisual(true);
+        return;
       case "projects":
         next.push("Displaying core projects... (use 'skip' for visuals)");
         break;
       case "contact":
-        next.push("Ping Elisha at elisha@email.com");
+        next.push("Ping Elisha at ehoseystewart@gmail.com");
         break;
       case "notebook":
         next.push("Opening digital notebook...");
@@ -117,7 +151,7 @@ export default function App() {
   return (
     <div className="app">
       <div className="hero">
-        {!bootDone && !showStatic && !showNotebook ? (
+        {!bootDone && !showStatic && !showNotebook && !showAboutVisual ? (
           <div className="boot-sequence">
             <pre className="terminal-text">
               {`> Initializing Elisha_Node.exe\n> Status: Connected to CORE\n> Type 'help' to begin...`}
@@ -126,15 +160,24 @@ export default function App() {
               // skip to standard portfolio
             </button>
           </div>
-        ) : showStatic ? (
+        ) : showStatic || showAboutVisual ? (
           <div className="static-view">
             <h2>// Elisha Hosey</h2>
-            <img
-              src="/elisha-photo.jpg"
-              alt="Elisha Hosey"
-              className="glitch-avatar"
-            />
-            <p>Developer. Designer. Digital daydreamer.</p>
+            <div className="glitch-avatar-wrapper">
+  <img src={photo} alt="Elisha Hosey" className="glitch-avatar base" />
+  <img src={photo} alt="" className="glitch-avatar red" />
+  <img src={photo} alt="" className="glitch-avatar blue" />
+</div>
+            <h3>// Experience</h3>
+            {experienceData.map((exp, i) => (
+              <NotebookEntry key={i} title={exp.title} content={exp.content} />
+            ))}
+            <h3>// Technologies</h3>
+            <div className="tag-grid">
+              {techTags.map((tag, i) => (
+                <span key={i} className="tech-tag">{tag}</span>
+              ))}
+            </div>
             <h3>// Projects</h3>
             <div className="project-list">
               <ProjectCard title="Project Alpha" desc="Full-stack app using React + Django." />
@@ -142,11 +185,14 @@ export default function App() {
               <ProjectCard title="Project Gamma" desc="Algorithmic puzzle dojo with real-time scoring." />
             </div>
             <h3>// Contact</h3>
-            <p>Email: elisha@email.com</p>
+            <p>Email: ehoseystewart@gmail.com</p>
             <a href="/Elisha_Hosey_Resume.pdf" download className="resume-button">
               <Download size={16} style={{ marginRight: "6px" }} /> Download Resume
             </a>
-            <button onClick={() => setShowStatic(false)}>
+            <button onClick={() => {
+              setShowStatic(false);
+              setShowAboutVisual(false);
+            }}>
               // return to terminal
             </button>
           </div>
