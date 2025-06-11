@@ -1,7 +1,9 @@
 import React, { useState } from "react";
 import "./App.css";
 import photo from "./img/elisha-photo.jpg";
+import resume from "./files/Elisha_resume.docx";
 import { Download } from "lucide-react";
+import ProjectCard from "./components/ProjectCard";
 
 const NotebookEntry = ({ title, content }) => {
   const [expanded, setExpanded] = useState(false);
@@ -16,28 +18,25 @@ const NotebookEntry = ({ title, content }) => {
   );
 };
 
-const ProjectCard = ({ title, desc }) => {
-  const [showModal, setShowModal] = useState(false);
+export const projects = [
+  {
+    title:"Eversolve" ,
+  description:"Work-in-progress puzzle dojo with real-time scoring to sharpen algorithm skills.", 
+  github: "https://github.com/elishahosey/eversolve",
+  },
+  {
+    title: "Email Cleaner",
+    description: "In-progress React + Django app to organize Gmail inboxes by label and category.",
+    github: "https://github.com/elishahosey/email-cleaner-app"
+  },
+  {
+    title: "Phishing Detection",
+    description: "Ongoing script using Gmail API to identify and flag suspicious emails.",
+    github: "https://github.com/elishahosey/adversarial-phishing-detection",
+    live: "https://adversarial-phish-detection.streamlit.app/"
+  }
+];
 
-  return (
-    <>
-      <div className="project-card" onClick={() => setShowModal(true)}>
-        <h4>{title}</h4>
-        <p>{desc}</p>
-      </div>
-      {showModal && (
-        <div className="modal-overlay" onClick={() => setShowModal(false)}>
-          <div className="modal-content" onClick={(e) => e.stopPropagation()}>
-            <h3>{title}</h3>
-            <p>{desc}</p>
-            <p>// More details coming soon...</p>
-            <button onClick={() => setShowModal(false)}>Close</button>
-          </div>
-        </div>
-      )}
-    </>
-  );
-};
 
 export default function App() {
   const [bootDone, setBootDone] = useState(false);
@@ -65,22 +64,14 @@ export default function App() {
       content: "Developed content authoring features, collaborated on Java backend services, and improved accessibility on key front-end modules."
     },
     {
-      title: "React & Django Developer - Email Cleaner Tool",
-      content: "Designed a Gmail-integrated tool for cleaning up promotional emails using OAuth and label filtering."
+      title: "Software Developer - Tyler Technologies",
+      content: "Contributed as a backend-focused developer specializing in data translation, debugging ETL pipelines, and maintaining reliable data transport for enterprise-level municipal software systems. Work closely aligned with data engineering and integration efforts."
     },
-    {
-      title: "Freelance Web Projects",
-      content: "Delivered full-stack solutions for personal clients, focusing on responsive design and performance."
-    },
-    {
-      title: "Graduate Student - M.S. in Data Science",
-      content: "Maintaining a 4.0 GPA while focusing on machine learning, statistics, and advanced Python workflows."
-    }
   ];
 
   const techTags = [
-    "React", "Django", "JavaScript", "Python", "Java", "Gmail API", "OAuth 2.0",
-    "Selenium", "AEM", "Git", "GitHub", "VS Code", "Bash", "SQL", "Tailwind CSS"
+    "React", "Django", "JavaScript", "Python", "Java", "Gmail API",
+    "Selenium", "AEM", "Git", "GitHub", "VS Code", "Bash", "SQL", "SCSS/CSS"
   ];
 
   const handleCommand = (e) => {
@@ -180,13 +171,14 @@ export default function App() {
             </div>
             <h3>// Projects</h3>
             <div className="project-list">
-              <ProjectCard title="Project Alpha" desc="Full-stack app using React + Django." />
-              <ProjectCard title="Project Beta" desc="Email cleanup tool leveraging Gmail API." />
-              <ProjectCard title="Project Gamma" desc="Algorithmic puzzle dojo with real-time scoring." />
+                {projects.map((project, idx) => (
+  <ProjectCard key={idx} {...project} />
+))}
+
             </div>
             <h3>// Contact</h3>
             <p>Email: ehoseystewart@gmail.com</p>
-            <a href="/Elisha_Hosey_Resume.pdf" download className="resume-button">
+            <a href={resume} download className="resume-button">
               <Download size={16} style={{ marginRight: "6px" }} /> Download Resume
             </a>
             <button onClick={() => {

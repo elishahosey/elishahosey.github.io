@@ -289,6 +289,69 @@ body, html, .app {
   opacity: 0.3;
 }
 
+.project-card {
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.project-card:hover {
+  transform: scale(1.02);
+  box-shadow: 0 0 20px #00ffe055;
+}
+
+.project-card.no-click {
+  cursor: default;
+}
+
+.project-card.no-click:hover {
+  transform: none;
+  box-shadow: none;
+}
+
+.project-description {
+  font-size: 1rem;
+}
+
+
+.github-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  color: #00ffe0;
+  text-decoration: none;
+  border: 1px solid #00ffe0;
+  padding: 0.3rem 0.6rem;
+  border-radius: 4px;
+  font-size: 0.9rem;
+  transition: all 0.2s ease-in-out;
+  margin-top: 1rem;
+}
+
+.github-link:hover {
+  background-color: #00ffe011;
+  box-shadow: 0 0 8px #00ffe0aa;
+}
+
+
+a.github-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  color: #00ffe0;
+  text-decoration: none;
+  border: 1px solid #00ffe0;
+  padding: 0.3rem 0.6rem;
+  border-radius: 4px;
+  font-size: 0.9rem;
+  transition: all 0.2s ease-in-out;
+  margin-top: 1rem;
+}
+
+a.github-link:hover {
+  background-color: #00ffe011;
+  box-shadow: 0 0 8px #00ffe0aa;
+}
+
 @keyframes glitch-red {
   0% { transform: translate(0, 0); }
   20% { transform: translate(-2px, 0); }
