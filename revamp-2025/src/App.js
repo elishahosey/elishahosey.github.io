@@ -20,9 +20,9 @@ const NotebookEntry = ({ title, content }) => {
 
 export const projects = [
   {
-    title:"Eversolve" ,
-  description:"Work-in-progress puzzle dojo with real-time scoring to sharpen algorithm skills.", 
-  github: "https://github.com/elishahosey/eversolve",
+    title: "Eversolve",
+    description: "Work-in-progress puzzle dojo with real-time scoring to sharpen algorithm skills.",
+    github: "https://github.com/elishahosey/eversolve",
   },
   {
     title: "Email Cleaner",
@@ -139,6 +139,17 @@ export default function App() {
     return () => clearTimeout(timeout);
   }, []);
 
+  React.useEffect(() => {
+    const isMobile = window.innerWidth <= 768;
+    if (isMobile) {
+      setBootDone(true);
+      setShowStatic(true);
+    } else {
+      const timeout = setTimeout(() => setBootDone(true), 3000);
+      return () => clearTimeout(timeout);
+    }
+  }, []);
+
   return (
     <div className="app">
       <div className="hero">
@@ -155,10 +166,10 @@ export default function App() {
           <div className="static-view">
             <h2>// Elisha Hosey</h2>
             <div className="glitch-avatar-wrapper">
-  <img src={photo} alt="Elisha Hosey" className="glitch-avatar base" />
-  <img src={photo} alt="" className="glitch-avatar red" />
-  <img src={photo} alt="" className="glitch-avatar blue" />
-</div>
+              <img src={photo} alt="Elisha Hosey" className="glitch-avatar base" />
+              <img src={photo} alt="" className="glitch-avatar red" />
+              <img src={photo} alt="" className="glitch-avatar blue" />
+            </div>
             <h3>// Experience</h3>
             {experienceData.map((exp, i) => (
               <NotebookEntry key={i} title={exp.title} content={exp.content} />
@@ -171,13 +182,24 @@ export default function App() {
             </div>
             <h3>// Projects</h3>
             <div className="project-list">
-                {projects.map((project, idx) => (
-  <ProjectCard key={idx} {...project} />
-))}
+              {projects.map((project, idx) => (
+                <ProjectCard key={idx} {...project} />
+              ))}
 
             </div>
             <h3>// Contact</h3>
-            <p>Email: ehoseystewart@gmail.com</p>
+            <p>
+              Email: ehoseystewart@gmail.com<br />
+              LinkedIn:{" "}
+              <a
+                href="https://www.linkedin.com/in/elishahosey"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="github-link"
+              >
+                linkedin.com/in/elishahosey
+              </a>
+            </p>
             <a href={resume} download className="resume-button">
               <Download size={16} style={{ marginRight: "6px" }} /> Download Resume
             </a>

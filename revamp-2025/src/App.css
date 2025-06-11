@@ -352,6 +352,89 @@ a.github-link:hover {
   box-shadow: 0 0 8px #00ffe0aa;
 }
 
+/* Terminal-style modal */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.85);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+}
+
+.modal-content {
+  background: #0a0a0a;
+  border: 1px solid #00ffe0;
+  padding: 2rem;
+  border-radius: 6px;
+  box-shadow: 0 0 16px #00ffe055;
+  max-width: 500px;
+  width: 80%;
+}
+
+
+
+@media (max-width: 768px) {
+  body, html, .app {
+    overflow: auto;
+    height: auto;
+  }
+
+  .hero {
+    height: auto;
+    padding: 1rem;
+    display: block;
+  }
+
+  .modal-overlay {
+    position: static;
+    width: auto;
+    height: auto;
+    background: none;
+    display: block;
+    padding: 0;
+  }
+
+  .modal-content {
+    width: 100%;
+    max-width: none;
+    box-shadow: none;
+    border-radius: 0;
+    padding: 1rem;
+    border: 1px solid #00ffe0;
+  }
+
+  .terminal-menu,
+  .boot-sequence {
+    background: none;
+    border: none;
+    box-shadow: none;
+    padding: 0.5rem;
+  }
+
+  .terminal-text,
+  .terminal-input,
+  .skip-button {
+    all: unset;
+    color: #00ffe0;
+    display: none; /* optional: skip terminal content entirely on mobile */
+  }
+
+  .static-view {
+    background-color: #0a0a0a;
+    padding: 1rem;
+    border-radius: 0;
+    border: none;
+  }
+
+  button {
+    display: none; /* Hide buttons on mobile */
+  }
+}
 @keyframes glitch-red {
   0% { transform: translate(0, 0); }
   20% { transform: translate(-2px, 0); }
