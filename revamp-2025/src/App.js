@@ -70,12 +70,12 @@ export default function App() {
     {
       title: "Software Developer at GM - (Quantum + Ultra Platform)",
       content: "Built and maintained reusable UI components and content authoring features within a global AEM platform serving 50k+ users. Automated test workflows using Selenium and collaborated with Java backend services to improve accessibility, reliability, and consistency across front-end modules.",
-      tags: ["React", "JavaScript", "AEM", "Selenium", "HTML/SCSS/CSS", "Git", "GitHub","TypeScript", "Unit Testing"]
+      tags: ["React", "JavaScript", "AEM", "Selenium", "HTML/SCSS/CSS", "Git", "GitHub","TypeScript", "Unit Testing","Java","Maven","Node.js"]
     },
     {
       title: "Software Developer - Tyler Technologies",
       content: "Contributed as a backend-focused developer specializing in data translation, debugging ETL pipelines, and maintaining reliable data transport for enterprise-level municipal software systems. Work closely aligned with data engineering and integration efforts.",
-      tags: ["SQL", "Python","SQL Server","REST API", "Bash","Linux","VB.NET"]
+      tags: ["SQL", "Python","SQL Server","REST API", "Bash","Linux","VB.NET","DLLs","Data Mapping","ETL","Debugging","Integration","Web Services","OpenSearch","Logging Analysis","GitKraken"]
     },
   ];
 
