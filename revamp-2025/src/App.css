@@ -4,10 +4,72 @@
 body, html, .app {
   margin: 0;
   height: 100%;
-  background-color: #0a0a0a;
+  background:
+    radial-gradient(circle at 18% 12%, rgba(0, 255, 224, 0.08), transparent 26rem),
+    radial-gradient(circle at 82% 78%, rgba(255, 74, 210, 0.05), transparent 24rem),
+    linear-gradient(180deg, #070909 0%, #0a0a0a 52%, #050606 100%);
   color: #00ffe0;
   font-family: 'Share Tech Mono', monospace;
   overflow: hidden;
+}
+
+.app {
+  position: relative;
+  isolation: isolate;
+}
+
+.app::before,
+.app::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+}
+
+.app::before {
+  z-index: -2;
+  background-image:
+    linear-gradient(90deg, transparent 0 49%, rgba(0, 255, 224, 0.12) 49% 51%, transparent 51% 100%),
+    linear-gradient(0deg, transparent 0 49%, rgba(0, 255, 224, 0.12) 49% 51%, transparent 51% 100%);
+  background-size: 44px 44px;
+  opacity: 0.18;
+}
+
+.app::after {
+  z-index: -1;
+  background-image:
+    radial-gradient(circle, rgba(0, 255, 224, 0.18) 0 1px, transparent 2px),
+    radial-gradient(circle, rgba(255, 74, 210, 0.12) 0 1px, transparent 2px);
+  background-size: 160px 160px, 220px 220px;
+  background-position: 24px 34px, 110px 92px;
+  opacity: 0.22;
+}
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(0, 255, 224, 0.55) rgba(0, 0, 0, 0.42);
+}
+
+*::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+*::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.42);
+  border-left: 1px solid rgba(0, 255, 224, 0.12);
+}
+
+*::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, rgba(0, 255, 224, 0.72), rgba(0, 118, 110, 0.62));
+  border: 2px solid rgba(0, 0, 0, 0.72);
+  border-radius: 999px;
+  box-shadow: 0 0 8px rgba(0, 255, 224, 0.24);
+}
+
+*::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, rgba(0, 255, 224, 0.88), rgba(255, 74, 210, 0.34));
+  box-shadow: 0 0 10px rgba(0, 255, 224, 0.34);
 }
 
 .modal-overlay {
@@ -100,6 +162,7 @@ body, html, .app {
   justify-content: center;
   flex-direction: column;
   position: relative;
+  z-index: 1;
 }
 
 .hero::before {
@@ -177,13 +240,14 @@ body, html, .app {
   z-index: 3;
   text-align: left;
   max-height: max-content;
-  background-color: rgba(0, 0, 0, 0.8);
+  background-color: rgba(0, 0, 0, 0.82);
   padding: 2rem;
   border: 1px solid #00ffe0;
   border-radius: 6px;
   max-width: 700px;
   animation: fadeIn 1s ease-in-out;
   overflow: auto;
+  box-shadow: 0 0 24px rgba(0, 255, 224, 0.18), 0 0 36px rgba(255, 74, 210, 0.08);
 }
 
 .tech-tag {

@@ -1,28 +1,39 @@
 import React, { useState } from "react";
 import "./App.css";
 import photo from "./img/elisha-photo.jpg";
-import resume from "./files/Elisha_resume.docx";
+import resume from "./files/Elisha_Hosey_Engineer_Data_v641_base.docx";
 import { Download } from "lucide-react";
 import ProjectCard from "./components/ProjectCard";
 
-const NotebookEntry = ({ title, content }) => {
-  const [expanded, setExpanded] = useState(false);
+const NotebookEntry = ({ title, content, tags = [] }) => {
+  const [expanded, setExpanded] = useState(true);
 
   return (
     <div className="notebook-entry">
       <h4 onClick={() => setExpanded(!expanded)} className="entry-title">
         {title}
       </h4>
-      {expanded && <p className="entry-content">{content}</p>}
+      {expanded && (
+        <>
+          <p className="entry-content">{content}</p>
+          {tags.length > 0 && (
+            <div className="tag-grid entry-tags">
+              {tags.map((tag) => (
+                <span key={tag} className="tech-tag">{tag}</span>
+              ))}
+            </div>
+          )}
+        </>
+      )}
     </div>
   );
 };
 
 export const projects = [
   {
-    title: "Eversolve",
-    description: "Work-in-progress puzzle dojo with real-time scoring to sharpen algorithm skills.",
-    github: "https://github.com/elishahosey/eversolve",
+    title: "SkillFreq",
+    description: "Data-driven job analysis tool that extracts skill frequency from job postings to guide targeted learning and application strategy.",
+    github: "https://github.com/elishahosey/SkillFreq",
   },
   {
     title: "Email Cleaner",
@@ -47,31 +58,25 @@ export default function App() {
   const [showAboutVisual, setShowAboutVisual] = useState(false);
 
   const notebookData = [
-    { title: "🧠 Big-O Cheat Sheet", content: "O(1), O(n), O(log n), O(n^2)... Common complexities and examples." },
-    { title: "🧩 Algorithms & Patterns", content: "Sliding window, two pointers, divide & conquer, recursion basics." },
-    { title: "🖧 Networking Fundamentals", content: "OSI model, HTTP vs TCP, common ports, DNS flow." },
-    { title: "🐚 Bash + Shell Notes", content: "grep, awk, sed, chmod, piping, scripting patterns." },
-    { title: "🧪 Data Science Ideas", content: "Pandas recipes, scikit-learn workflows, feature engineering notes." }
+    { title: "🧠 Big-O Cheat Sheet", content: "TBD" },
+    { title: "🧩 Algorithms & Patterns", content: "TBD" },
+    { title: "🖧 Networking Fundamentals", content: "TBD" },
+    { title: "🐚 Bash + Shell Notes", content: "TBD" },
+    { title: "🧪 Data Science Ideas", content: "TBD" },
+    { title: "🧪 General", content: "TBD" },
   ];
 
   const experienceData = [
     {
-      title: "Software Developer at GM - Ultra Platform",
-      content: "Built reusable UI components, automated test cases with Selenium, and supported a custom AEM CMS used globally by 50k+ users."
-    },
-    {
-      title: "Software Engineer at GM - Quantum Team",
-      content: "Developed content authoring features, collaborated on Java backend services, and improved accessibility on key front-end modules."
+      title: "Software Developer at GM - (Quantum + Ultra Platform)",
+      content: "Built and maintained reusable UI components and content authoring features within a global AEM platform serving 50k+ users. Automated test workflows using Selenium and collaborated with Java backend services to improve accessibility, reliability, and consistency across front-end modules.",
+      tags: ["React", "JavaScript", "AEM", "Selenium", "HTML/SCSS/CSS", "Git", "GitHub","TypeScript", "Unit Testing"]
     },
     {
       title: "Software Developer - Tyler Technologies",
-      content: "Contributed as a backend-focused developer specializing in data translation, debugging ETL pipelines, and maintaining reliable data transport for enterprise-level municipal software systems. Work closely aligned with data engineering and integration efforts."
+      content: "Contributed as a backend-focused developer specializing in data translation, debugging ETL pipelines, and maintaining reliable data transport for enterprise-level municipal software systems. Work closely aligned with data engineering and integration efforts.",
+      tags: ["SQL", "Python","SQL Server","REST API", "Bash","Linux","VB.NET"]
     },
-  ];
-
-  const techTags = [
-    "React", "Django", "JavaScript", "Python", "Java", "Gmail API",
-    "Selenium", "AEM", "Git", "GitHub", "VS Code", "Bash", "SQL", "SCSS/CSS"
   ];
 
   const handleCommand = (e) => {
@@ -164,7 +169,7 @@ export default function App() {
           </div>
         ) : showStatic || showAboutVisual ? (
           <div className="static-view">
-            <h2>// Elisha Hosey</h2>
+            <h2>// Elisha Hosey-Stewart</h2>
             <div className="glitch-avatar-wrapper">
               <img src={photo} alt="Elisha Hosey" className="glitch-avatar base" />
               <img src={photo} alt="" className="glitch-avatar red" />
@@ -172,14 +177,8 @@ export default function App() {
             </div>
             <h3>// Experience</h3>
             {experienceData.map((exp, i) => (
-              <NotebookEntry key={i} title={exp.title} content={exp.content} />
+              <NotebookEntry key={i} title={exp.title} content={exp.content} tags={exp.tags} />
             ))}
-            <h3>// Technologies</h3>
-            <div className="tag-grid">
-              {techTags.map((tag, i) => (
-                <span key={i} className="tech-tag">{tag}</span>
-              ))}
-            </div>
             <h3>// Projects</h3>
             <div className="project-list">
               {projects.map((project, idx) => (
@@ -190,6 +189,7 @@ export default function App() {
             <h3>// Contact</h3>
             <p>
               Email: ehoseystewart@gmail.com<br />
+              Phone: (361) 489-7538<br />
               LinkedIn:{" "}
               <a
                 href="https://www.linkedin.com/in/elishahosey"
